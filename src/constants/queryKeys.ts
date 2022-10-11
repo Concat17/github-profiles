@@ -1,0 +1,3 @@
+export enum QUERY_KEYS {
+  GET_GITHUB_USER = "GET_GITHUB_USER",
+}
