@@ -1,9 +1,13 @@
-import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import { SearchPage } from "./features/SearchPage";
+import { Root } from "./Root";
 
 function App() {
-  return <SearchPage />;
+  return (
+    <Router>
+      <Root />
+    </Router>
+  );
 }
 
 export default App;
