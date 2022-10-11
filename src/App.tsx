@@ -1,7 +1,9 @@
 import React from "react";
 
+import { SearchPage } from "./features/SearchPage";
+
 function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return <SearchPage />;
 }
 
 export default App;
