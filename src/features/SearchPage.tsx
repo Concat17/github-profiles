@@ -13,8 +13,12 @@ export function SearchPage() {
   };
 
   useEffect(() => {
-    if (userData?.login && userData?.avatar_url) {
-      user.setUserInfo(userData.login, userData.avatar_url);
+    if (userData?.login && userData?.avatar_url && userData?.repos_url) {
+      user.setUserInfo(
+        userData.login,
+        userData.avatar_url,
+        userData?.repos_url
+      );
     }
   }, [user, userData]);
 
