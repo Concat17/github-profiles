@@ -1,5 +1,5 @@
-import { useGetGithubRepos } from "../hooks/useGetGithubRepos";
-import { useStores } from "../models/root-store/root-store-context";
+import { useGetGithubRepos } from "../hooks";
+import { useStores } from "../models/root-store";
 
 export function UserPage() {
   const { user } = useStores();
@@ -10,7 +10,6 @@ export function UserPage() {
     isError,
   } = useGetGithubRepos(user.reposUrl);
 
-  console.log("repos", user.reposUrl, reposData);
   return (
     <div className="bg-gray-800 min-h-full">
       <div>
@@ -25,7 +24,7 @@ export function UserPage() {
           <th>Stars</th>
         </tr>
         {reposData &&
-          reposData.map((repo: any) => (
+          reposData.map((repo) => (
             <tr key={repo.id}>
               <td>{repo.name}</td>
               <td>{repo.language}</td>

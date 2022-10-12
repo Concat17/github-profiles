@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { RootStore } from "../models/root-store/root-store";
+import { RootStore } from "../models/root-store";
 import { SearchPage } from "./SearchPage";
 import { UserPage } from "./UserPage";
 

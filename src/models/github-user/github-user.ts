@@ -1,6 +1,6 @@
 import { Instance, types } from "mobx-state-tree";
 
-import { GithubRepoModel } from "../github-repo/github-repo";
+import { GithubRepoModel } from "../github-repo";
 
 export const GithubUserModel = types
   .model("GithubUserModel")
@@ -20,3 +20,9 @@ export const GithubUserModel = types
 
 type GithubUserType = Instance<typeof GithubUserModel>;
 export interface GithubUser extends GithubUserType {}
+export const createInitGithubUser = () => ({
+  login: "",
+  avatarUrl: "",
+  reposUrl: "",
+  repos: [],
+});
