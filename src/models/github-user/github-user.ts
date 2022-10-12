@@ -1,5 +1,6 @@
 import { Instance, types } from "mobx-state-tree";
 
+import { ApiUser } from "../../types";
 import { GithubRepoModel } from "../github-repo";
 
 export const GithubUserModel = types
@@ -11,10 +12,10 @@ export const GithubUserModel = types
     repos: types.array(GithubRepoModel),
   })
   .actions((self) => ({
-    setUserInfo: (login: string, avatarUrl: string, reposUrl: string) => {
-      self.login = login;
-      self.avatarUrl = avatarUrl;
-      self.reposUrl = reposUrl;
+    setUserInfo: (apiUserData: ApiUser) => {
+      self.login = apiUserData.login;
+      self.avatarUrl = apiUserData.avatar_url;
+      self.reposUrl = apiUserData.repos_url;
     },
   }));
 
