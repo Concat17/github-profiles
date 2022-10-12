@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { BrowserRouter as Router } from "react-router-dom";
 
+import { Root } from "./features/Root";
 import { RootStore, RootStoreModel } from "./models/root-store/root-store";
 import { RootStoreProvider } from "./models/root-store/root-store-context";
-import { Root } from "./Root";
 
 const queryClient = new QueryClient();
 
@@ -14,9 +13,7 @@ function App() {
   return (
     <RootStoreProvider value={rootStore}>
       <QueryClientProvider client={queryClient}>
-        <Router>
-          <Root />
-        </Router>
+        <Root rootStore={rootStore} />
       </QueryClientProvider>
     </RootStoreProvider>
   );
