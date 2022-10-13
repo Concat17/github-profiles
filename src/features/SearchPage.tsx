@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import { Button, Input } from "../components";
+import { Page } from "../components/Page";
 import { useGetGithubUser } from "../hooks";
 import { useStores } from "../models/root-store";
 
@@ -21,7 +22,7 @@ export function SearchPage() {
   }, [isFetchedAfterMount, user, userData]);
 
   return (
-    <div className="flex bg-gray-800 min-h-full ">
+    <Page>
       <div className="flex m-auto">
         <Input
           value={login}
@@ -32,6 +33,6 @@ export function SearchPage() {
           Find
         </Button>
       </div>
-    </div>
+    </Page>
   );
 }

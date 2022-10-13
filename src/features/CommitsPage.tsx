@@ -1,4 +1,5 @@
-import { BackArrowIcon, Button } from "../components";
+import { BackArrowIcon, Button, Table, TBody, TD, TH, THead, TR } from "../components";
+import { Page } from "../components/Page";
 import { useGetGithubCommits } from "../hooks/useGetGithubCommits";
 import { useStores } from "../models/root-store";
 
@@ -8,29 +9,31 @@ export function CommitsPage() {
   const { data: commits } = useGetGithubCommits(repo.owner, repo.name);
 
   return (
-    <div className="bg-gray-800 min-h-full">
+    <Page>
       <Button icon={<BackArrowIcon />} onClick={() => repo.reset()}>
         Back
       </Button>
-      <table>
-        <thead>
-          <tr>
-            <th>Author</th>
-            <th>Hash</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          {commits &&
-            commits.map((c) => (
-              <tr key={c.sha}>
-                <td>{c.commit.author.name}</td>
-                <td>{c.sha}</td>
-                <td>{c.commit.author.date}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-    </div>
+      <div className="mt-4 grow overflow-auto ">
+        <Table>
+          <THead>
+            <TR>
+              <TH>Author</TH>
+              <TH>Hash</TH>
+              <TH>Date</TH>
+            </TR>
+          </THead>
+          <TBody>
+            {commits &&
+              commits.map((c, i) => (
+                <TR key={c.sha} i={i}>
+                  <TD>{c.commit.author.name}</TD>
+                  <TD>{c.sha}</TD>
+                  <TD>{c.commit.author.date}</TD>
+                </TR>
+              ))}
+          </TBody>
+        </Table>
+      </div>
+    </Page>
   );
 }
