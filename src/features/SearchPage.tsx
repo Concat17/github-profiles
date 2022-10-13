@@ -6,7 +6,7 @@ import { useStores } from "../models/root-store";
 
 export function SearchPage() {
   const { user } = useStores();
-  const [login, setLogin] = useState("concat17");
+  const [login, setLogin] = useState("levabala");
   const {
     data: userData,
     isFetchedAfterMount,
@@ -28,7 +28,9 @@ export function SearchPage() {
           onChange={(event) => setLogin(event.target.value)}
           type="text"
         />
-        <Button onClick={() => refetch()}>Find</Button>
+        <Button onClick={() => refetch()} className="ml-5">
+          Find
+        </Button>
       </div>
     </div>
   );
