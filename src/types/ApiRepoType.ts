@@ -4,4 +4,7 @@ export type ApiRepo = {
   language: string;
   description: string;
   stargazers_count: number;
+  owner: {
+    login: string;
+  };
 };

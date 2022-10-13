@@ -2,7 +2,7 @@ import { useGetGithubRepos } from "../hooks";
 import { useStores } from "../models/root-store";
 
 export function UserPage() {
-  const { user } = useStores();
+  const { user, repo } = useStores();
 
   const {
     data: reposData,
@@ -28,12 +28,12 @@ export function UserPage() {
         </thead>
         <tbody>
           {reposData &&
-            reposData.map((repo) => (
-              <tr key={repo.id}>
-                <td>{repo.name}</td>
-                <td>{repo.language}</td>
-                <td>{repo.description}</td>
-                <td>{repo.stargazers_count}</td>
+            reposData.map((r) => (
+              <tr key={r.id}>
+                <td onClick={() => repo.setRepoInfo(r)}>{r.name}</td>
+                <td>{r.language}</td>
+                <td>{r.description}</td>
+                <td>{r.stargazers_count}</td>
               </tr>
             ))}
         </tbody>

@@ -1,13 +1,11 @@
 import { applySnapshot, Instance, types } from "mobx-state-tree";
 
 import { ApiUser } from "../../types";
-import { GithubRepoModel } from "../github-repo";
 
 const initGithubUserState = {
   login: "",
   avatarUrl: "",
   reposUrl: "",
-  repos: [],
 };
 
 export const GithubUserModel = types
@@ -16,8 +14,6 @@ export const GithubUserModel = types
     avatarUrl: types.string,
     login: types.string,
     reposUrl: types.string,
-
-    repos: types.array(GithubRepoModel),
   })
   .actions((self) => ({
     setUserInfo: (apiUserData: ApiUser) => {
