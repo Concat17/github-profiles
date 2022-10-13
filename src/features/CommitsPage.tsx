@@ -25,7 +25,7 @@ export function CommitsPage() {
           <TBody>
             {commits &&
               commits.map((c, i) => (
-                <TR key={c.sha} i={i}>
+                <TR className="text-center" key={c.sha} i={i}>
                   <TD>{c.commit.author.name}</TD>
                   <TD>{c.sha}</TD>
                   <TD>{c.commit.author.date}</TD>

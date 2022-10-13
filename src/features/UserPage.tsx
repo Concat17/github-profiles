@@ -41,9 +41,9 @@ export function UserPage() {
                   <TD className="border-r" onClick={() => repo.setRepoInfo(r)}>
                     {r.name}
                   </TD>
-                  <TD className="border-r">{r.language}</TD>
+                  <TD className="border-r text-center">{r.language}</TD>
                   <TD className="border-r w-5/12">{r.description}</TD>
-                  <TD>{r.stargazers_count}</TD>
+                  <TD className="text-center">{r.stargazers_count}</TD>
                 </TR>
               ))}
           </TBody>
