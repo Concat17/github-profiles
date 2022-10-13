@@ -1,3 +1,4 @@
+import { BackArrowIcon, Button } from "../components";
 import { useGetGithubCommits } from "../hooks/useGetGithubCommits";
 import { useStores } from "../models/root-store";
 
@@ -8,7 +9,9 @@ export function CommitsPage() {
 
   return (
     <div className="bg-gray-800 min-h-full">
-      <button onClick={() => repo.reset()}>Back</button>
+      <Button icon={<BackArrowIcon />} onClick={() => repo.reset()}>
+        Back
+      </Button>
       <table>
         <thead>
           <tr>

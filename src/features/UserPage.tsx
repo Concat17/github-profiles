@@ -1,3 +1,4 @@
+import { BackArrowIcon, Button } from "../components";
 import { useGetGithubRepos } from "../hooks";
 import { useStores } from "../models/root-store";
 
@@ -12,7 +13,10 @@ export function UserPage() {
 
   return (
     <div className="bg-gray-800 min-h-full">
-      <button onClick={() => user.reset()}>Back</button>
+      <Button icon={<BackArrowIcon />} onClick={() => user.reset()}>
+        Back
+      </Button>
+
       <div>
         <div className="m-auto">{user.login}</div>
         <img src={user.avatarUrl} alt="Profile_Pic" />

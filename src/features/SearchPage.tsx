@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import { Button } from "../components";
 import { useGetGithubUser } from "../hooks";
 import { useStores } from "../models/root-store";
 
@@ -20,19 +21,14 @@ export function SearchPage() {
   }, [isFetchedAfterMount, user, userData]);
 
   return (
-    <div className="bg-gray-800 min-h-full flex">
-      <div className="m-auto">
+    <div className="flex bg-gray-800 min-h-full ">
+      <div className="flex m-auto">
         <input
           value={login}
           onChange={(event) => setLogin(event.target.value)}
           type="text"
         />
-        <button
-          onClick={() => refetch()}
-          className="ml-5 p-2 text-white border-white border-2 border-solid rounded"
-        >
-          Find
-        </button>
+        <Button onClick={() => refetch()}>Find</Button>
       </div>
     </div>
   );
