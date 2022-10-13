@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { Button } from "../components";
+import { Button, Input } from "../components";
 import { useGetGithubUser } from "../hooks";
 import { useStores } from "../models/root-store";
 
@@ -23,7 +23,7 @@ export function SearchPage() {
   return (
     <div className="flex bg-gray-800 min-h-full ">
       <div className="flex m-auto">
-        <input
+        <Input
           value={login}
           onChange={(event) => setLogin(event.target.value)}
           type="text"
