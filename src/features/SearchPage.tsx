@@ -5,18 +5,19 @@ import { useStores } from "../models/root-store";
 
 export function SearchPage() {
   const { user } = useStores();
-  const [login, setLogin] = useState("");
-  const { data: userData, refetch } = useGetGithubUser(login);
-
-  const handleFindUserClick = () => {
-    refetch();
-  };
+  const [login, setLogin] = useState("concat17");
+  const {
+    data: userData,
+    isFetchedAfterMount,
+    refetch,
+  } = useGetGithubUser(login);
 
   useEffect(() => {
-    if (userData) {
+    // isFetchedAfterMount used here to not show previously cached data after returning to this page
+    if (userData && isFetchedAfterMount) {
       user.setUserInfo(userData);
     }
-  }, [user, userData]);
+  }, [isFetchedAfterMount, user, userData]);
 
   return (
     <div className="bg-gray-800 min-h-full flex">
@@ -27,7 +28,7 @@ export function SearchPage() {
           type="text"
         />
         <button
-          onClick={handleFindUserClick}
+          onClick={() => refetch()}
           className="ml-5 p-2 text-white border-white border-2 border-solid rounded"
         >
           Find

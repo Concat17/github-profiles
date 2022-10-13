@@ -11,5 +11,8 @@ export const useGetGithubUser = (login: string) =>
       axios
         .get(`https://api.github.com/users/${login}`)
         .then((res) => res.data),
-    { enabled: false, refetchOnWindowFocus: false }
+    {
+      enabled: false,
+      refetchOnWindowFocus: false,
+    }
   );
