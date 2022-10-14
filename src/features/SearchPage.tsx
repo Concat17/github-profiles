@@ -42,6 +42,7 @@ export function SearchPage() {
             value={login}
             onChange={(event) => setLogin(event.target.value)}
             type="text"
+            placeholder="Search github user"
           />
           <Button
             isLoading={isLoading || isFetching}
