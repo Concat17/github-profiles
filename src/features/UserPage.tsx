@@ -39,7 +39,9 @@ export function UserPage() {
               reposData.map((r, i) => (
                 <TR key={r.id} i={i}>
                   <TD className="border-r" onClick={() => repo.setRepoInfo(r)}>
-                    {r.name}
+                    <span className="text-green-300 cursor-pointer hover:underline hover:text-green-100">
+                      {r.name}
+                    </span>
                   </TD>
                   <TD className="border-r text-center">{r.language}</TD>
                   <TD className="border-r w-5/12">{r.description}</TD>
