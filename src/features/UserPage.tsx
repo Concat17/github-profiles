@@ -6,7 +6,7 @@ import { useStores } from "../models/root-store";
 export function UserPage() {
   const { user, repo } = useStores();
 
-  const { data: reposData, isError } = useGetGithubRepos(user.reposUrl);
+  const { data: repos } = useGetGithubRepos(user.reposUrl);
 
   return (
     <Page>
@@ -25,18 +25,18 @@ export function UserPage() {
         />
       </div>
       <div className="mt-4 grow overflow-auto ">
-        <Table>
-          <THead>
-            <TR>
-              <TH>Name</TH>
-              <TH>Programming Language</TH>
-              <TH>Description</TH>
-              <TH>Stars</TH>
-            </TR>
-          </THead>
-          <TBody>
-            {reposData &&
-              reposData.map((r, i) => (
+        {repos && repos.length > 0 ? (
+          <Table>
+            <THead>
+              <TR>
+                <TH>Name</TH>
+                <TH>Programming Language</TH>
+                <TH>Description</TH>
+                <TH>Stars</TH>
+              </TR>
+            </THead>
+            <TBody>
+              {repos.map((r, i) => (
                 <TR key={r.id} i={i}>
                   <TD className="border-r" onClick={() => repo.setRepoInfo(r)}>
                     <span className="text-green-300 cursor-pointer hover:underline hover:text-green-100">
@@ -48,8 +48,11 @@ export function UserPage() {
                   <TD className="text-center">{r.stargazers_count}</TD>
                 </TR>
               ))}
-          </TBody>
-        </Table>
+            </TBody>
+          </Table>
+        ) : (
+          <div>User have no repositories</div>
+        )}
       </div>
     </Page>
   );

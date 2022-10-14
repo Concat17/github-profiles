@@ -1,5 +1,3 @@
-import { ReactElement } from "react";
-
 type InputProps = React.ComponentPropsWithoutRef<"input">;
 
 export function Input(props: InputProps) {

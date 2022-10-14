@@ -33,7 +33,7 @@ export function SearchPage() {
   useEffect(() => {
     if (isError) setIsUserNotFound(true);
   }, [isError]);
-  console.log("isLoad", isLoading, isFetching);
+
   return (
     <Page>
       <div className="m-auto">
