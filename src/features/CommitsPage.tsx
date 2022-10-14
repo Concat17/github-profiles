@@ -2,6 +2,7 @@ import { BackArrowIcon, Button, Table, TBody, TD, TH, THead, TR } from "../compo
 import { Page } from "../components/Page";
 import { useGetGithubCommits } from "../hooks/useGetGithubCommits";
 import { useStores } from "../models/root-store";
+import { formatDate } from "../utils";
 
 export function CommitsPage() {
   const { repo } = useStores();
@@ -28,7 +29,7 @@ export function CommitsPage() {
                 <TR className="text-center" key={c.sha} i={i}>
                   <TD>{c.commit.author.name}</TD>
                   <TD>{c.sha}</TD>
-                  <TD>{c.commit.author.date}</TD>
+                  <TD>{formatDate(c.commit.author.date)}</TD>
                 </TR>
               ))}
           </TBody>
