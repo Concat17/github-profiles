@@ -29,7 +29,7 @@ export function Button(props: ButtonProps) {
   return (
     <button
       ref={ref}
-      className={`flex justify-center h-8 py-1 px-6 w-fit
+      className={`flex justify-center items-center h-8 py-1 px-6 w-fit
        ${icon ? "pl-1" : ""}
        text-green-400 border-green-400 hover:bg-green-900 hover:text-green-200
        border-2 border-solid rounded ${classNameProps}`}
