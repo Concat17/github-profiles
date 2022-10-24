@@ -25,10 +25,14 @@ export function SearchPage() {
     }
   }, [isError, isFetchedAfterMount, user, userData]);
 
-  const handleFindClick = useCallback(() => {
-    setIsUserNotFound(false);
-    refetch();
-  }, [refetch]);
+  const handleFindClick = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setIsUserNotFound(false);
+      refetch();
+    },
+    [refetch]
+  );
 
   useEffect(() => {
     if (isError) setIsUserNotFound(true);
@@ -37,7 +41,7 @@ export function SearchPage() {
   return (
     <Page>
       <div className="m-auto">
-        <div className="flex ">
+        <form className="flex " onSubmit={(e) => handleFindClick(e)}>
           <Input
             value={login}
             onChange={(event) => setLogin(event.target.value)}
@@ -45,21 +49,19 @@ export function SearchPage() {
             placeholder="Search github user"
           />
           <Button
+            type="submit"
             isLoading={isLoading || isFetching}
-            onClick={handleFindClick}
             className="ml-5 "
           >
             Find
           </Button>
-        </div>
-        <span
-          className={`text-red-500 mt-2 block ${
-            !isUserNotFound && "invisible"
-          }`}
-        >
-          User is not found :(
-        </span>
+        </form>
       </div>
+      <span
+        className={`text-red-500 mt-2 block ${!isUserNotFound && "invisible"}`}
+      >
+        User is not found :(
+      </span>
     </Page>
   );
 }
